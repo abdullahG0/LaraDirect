@@ -1,0 +1,6 @@
+.next
+node_modules
+data/mock-catalogue.json
+public/products
+src/lib/supabase/types.ts
+scripts/catalogue/templates.ts

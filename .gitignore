@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.env
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+supabase/.temp/
+# generated product images (regenerate with npm run gen:images)
+public/products/*.webp
+!public/products/.gitkeep
+
+# local mock distributor state (file store)
+.data/

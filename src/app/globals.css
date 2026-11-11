@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* shadcn tokens mapped to the LaraDirect brand kit */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%; /* ink-900 */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 188 86% 53%; /* cta cyan #22D3EE */
+    --primary-foreground: 221 63% 15%; /* brand-900 navy */
+    --secondary: 216 33% 96%; /* surface-alt */
+    --secondary-foreground: 221 63% 15%;
+    --muted: 216 33% 96%;
+    --muted-foreground: 215 19% 35%; /* ink-600 */
+    --accent: 206 70% 95%; /* pale sky, hovers */
+    --accent-foreground: 221 63% 15%;
+    --destructive: 0 72% 51%; /* danger-500 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%; /* #E2E8F0 */
+    --input: 214 25% 84%;
+    --ring: 192 82% 31%; /* brand-600 teal */
+    --radius: 0.75rem;
+    /* Admin charts: validated categorical slots (dataviz reference palette) */
+    --chart-1: #2a78d6;
+    --chart-2: #eb6834;
+    --chart-grid: #e7e5e0;
+    --chart-axis: #52514e;
+  }
+  /* Dark mode is admin-only (spec §11.2) */
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 217 91% 60%;
+    --chart-1: #3987e5;
+    --chart-2: #d95926;
+    --chart-grid: #2e2e2b;
+    --chart-axis: #c3c2b7;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    line-height: 1.6;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
