@@ -41,13 +41,13 @@ Health check: `GET /api/health` shows which distributor adapter is active.
 
 ### Background jobs
 
-| Route                              | What it does                                         | Schedule (`vercel.json`) |
+| Route                              | What it does                                         | Intended schedule        |
 | ---------------------------------- | ---------------------------------------------------- | ------------------------ |
 | `POST /api/cron/sync`              | Catalogue sync; mock drift first                     | every 15 min             |
 | `POST /api/cron/poll-orders`       | Status of open orders, shipments, emails             | every 5 min              |
 | `POST /api/cron/retry-submissions` | Submit paid orders, retry failed attempts (backoff)  | every minute             |
 
-All need `Authorization: Bearer $CRON_SECRET`. Locally you don't need cron: the order page refreshes its own order every 15 seconds, and admins have “Sync now” and “Refresh status”. Vercel Hobby only allows daily crons; use Pro, or `pg_cron` calling these URLs.
+All need `Authorization: Bearer $CRON_SECRET`. Locally you don't need cron: the order page refreshes its own order every 15 seconds, and admins have “Sync now” and “Refresh status”. Vercel Hobby only allows daily crons, so the demo deployment has no `crons` in `vercel.json`; for production, add them back on Vercel Pro (`{ "path": "/api/cron/sync", "schedule": "*/15 * * * *" }` etc.), or use `pg_cron` calling these URLs.
 
 ```bash
 curl -X POST -H "Authorization: Bearer $CRON_SECRET" http://localhost:3000/api/cron/sync
