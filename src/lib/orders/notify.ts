@@ -3,12 +3,13 @@ import type { Db } from '@/lib/supabase/db';
 import { sendEmail } from '@/lib/email/send';
 import { renderAdminAlert, renderOrderEmail, type OrderEmailPayload } from '@/lib/email/templates';
 import { getSettings } from '@/lib/settings';
+import { siteUrl } from '@/lib/site-url';
 import { addOrderEvent } from './lifecycle';
+
+export { siteUrl };
 
 export type CustomerTemplate =
   'order_confirmation' | 'order_dispatched' | 'order_delivered' | 'order_problem';
-
-export const siteUrl = () => (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000').replace(/\/$/, '');
 
 export function trackingLink(orderNumber: string, token: string) {
   return `${siteUrl()}/order/${encodeURIComponent(orderNumber)}?token=${token}`;

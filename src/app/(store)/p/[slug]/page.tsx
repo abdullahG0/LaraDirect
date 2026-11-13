@@ -13,10 +13,11 @@ import { sampleReviewsFor } from '@/lib/catalogue/sample-reviews';
 import type { PublicProduct } from '@/lib/catalogue/types';
 import { formatGBP } from '@/lib/utils/money';
 import { STORE } from '@/lib/store-config';
+import { siteUrl } from '@/lib/site-url';
 
 type Props = { params: { slug: string } };
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const SITE_URL = siteUrl();
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = await getProductBySlug(params.slug);

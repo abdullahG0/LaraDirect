@@ -1,12 +1,13 @@
 import type { MetadataRoute } from 'next';
 import { CATEGORIES } from '@/lib/catalogue/categories';
 import { getCatalogue } from '@/lib/catalogue/queries';
+import { siteUrl } from '@/lib/site-url';
 
 export const revalidate = 3600;
 
 // sitemap.xml (step 8.3): static pages, every category and subcategory, every published product.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000').replace(/\/$/, '');
+  const base = siteUrl();
   const now = new Date();
   const pages = [
     '',
